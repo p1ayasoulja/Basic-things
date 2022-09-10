@@ -1,42 +1,24 @@
-interface Mynum {
-    boolean test(int y);
-}
-interface hjk{
-        int sum(int hh);
-
-}
-interface check {
-    boolean testi(String e, String m);
-}
-interface rev{
-    String reve(String r);
+interface Multi<T> {
+    T mul(T t);
 }
 
-public class Lyambda {
+public class lyambda {
     public static void main(String[] args) {
-        Mynum x = (y) -> (y % 2 == 0);
-        if (x.test(10)) System.out.println("True");
-        if (!x.test(15)) System.out.println("False");
-        Mynum w = (y) -> (y * y < 100);
-        if (w.test(-5)) System.out.println("Number less -10<n<10");
-        check we = (e, m) -> (e.equals(m));
-        if (we.testi("Mam", "Mam")) System.out.println("Good");
-        hjk gg = (u) ->{
-            int factsum=0;
-            for(int i=1;i<u+1;i++){
-                factsum+=i;
+        Multi<String> hj = (str) -> {
+            String rev = "";
+            for (int i = str.length()-1; i > -1; i--) {
+                rev += str.charAt(i);
             }
-            return factsum;
+            return rev;
         };
-        System.out.println(gg.sum(10));
-        rev yy=(m)->{
-            String rever="";
-            for(int i=m.length()-1;i>-1;i--){
-                rever+=m.charAt(i);
+        Multi<Integer> in = (h) -> {
+            int fac = 0;
+            for (int i = 1; i < h + 1; i++) {
+                fac += i;
             }
-            return rever;
+            return fac;
         };
-        System.out.println("Hello >rever >"+yy.reve("Hello"));
-
+        System.out.println("Hjkl; > rev > "+hj.mul("Hjkl;"));
+        System.out.println("25 fib = "+in.mul(25));
     }
 }
